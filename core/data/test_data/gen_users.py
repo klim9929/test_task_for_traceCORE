@@ -1,23 +1,29 @@
-from dataclasses import dataclass, asdict
 import faker
+from dataclasses import dataclass, asdict
 
 
 @dataclass
 class UserData:
+    id: int
+    username: str
+    firstName: str
+    lastName: str
+    email: str
+    password: str
+    phone: str
+    userStatus: int
+
     def __init__(self):
-        self.faker = faker.Faker()
+        fake = faker.Faker()
+        self.id = fake.random_number(digits=5)
+        self.username = fake.user_name()
+        self.firstName = fake.first_name()
+        self.lastName = fake.last_name()
+        self.email = fake.email()
+        self.password = fake.password()
+        self.phone = fake.phone_number()
+        self.userStatus = fake.random_element(elements=(0, 1, 2))
 
-    @property
-    def data(self):
-        return {
-            "id": self.faker.random_number(digits=5),
-            "username": self.faker.user_name(),
-            "firstName": self.faker.first_name(),
-            "lastName": self.faker.last_name(),
-            "email": self.faker.email(),
-            "password": self.faker.password(),
-            "phone": self.faker.phone_number(),
-            "userStatus": self.faker.random_element(elements=(0, 1, 2))
-        }
-
-
+    def as_dict(self):
+        """Преобразует объект в словарь для отправки в API."""
+        return asdict(self)
