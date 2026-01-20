@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+"""Pydantic модель валидации для пользователя"""
 
 class User(BaseModel):
     id: int

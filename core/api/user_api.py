@@ -1,6 +1,7 @@
 from core.api.http_client import HttpClient
 from core.config.settings import CREATE_USER_LIST, GET_USER
 
+"""Здесь можно дописать методы для работы с эндпоинтами"""
 
 class UserApi:
     """API-клиент для работы с пользователями."""

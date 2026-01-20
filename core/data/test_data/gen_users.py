@@ -1,6 +1,7 @@
 import faker
 from dataclasses import dataclass, asdict
 
+"""Фабрика генерации пользователей через faker."""
 
 @dataclass
 class UserData:
